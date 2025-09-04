@@ -26,6 +26,7 @@ def generate_script():
     """
     data = request.get_json()
     prompt = data.get("prompt")
+    language = data.get("language")
 
     if not prompt:
         return jsonify({"error": "Prompt is required"}), 400
@@ -43,9 +44,9 @@ def generate_script():
                               "Do not include any conversational text, explanations, or introductory phrases. "
                               "For example, if asked for a Python script, provide only the Python code block.")
         
-        # Combine the user prompt with the system instruction
+        # Combine the user prompt with the system instruction and language preference
         full_prompt = (f"System Instruction: {system_instruction}\n\n"
-                       f"User Prompt: {prompt}")
+                       f"User Prompt: Generate a {language} script for: {prompt}")
 
         response = model.generate_content(full_prompt)
         
