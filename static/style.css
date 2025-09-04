@@ -1,0 +1,13 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+.container {
+    max-width: 800px;
+}
+.response-box {
+    background-color: #1e1e1e;
+    border-left: 4px solid #6366f1;
+    padding: 1.5rem;
+}

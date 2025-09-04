@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Script Generator</title>
+    <!-- Tailwind CSS is loaded via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Your custom CSS is loaded here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-900 text-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="container mx-auto bg-gray-800 p-8 rounded-xl shadow-lg">
+        <h1 class="text-4xl font-bold text-center mb-6 text-indigo-400">Personal Script Generator</h1>
+        <p class="text-center text-gray-400 mb-8">
+            Tell me what you need, and I will generate a script for you.
+        </p>
+        
+        <div class="mb-6">
+            <textarea id="promptInput" rows="5" placeholder="e.g., A Python script to sort a list of numbers, a shell script to backup files..."
+                class="w-full p-4 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-200 resize-none transition-colors duration-200"></textarea>
+        </div>
+
+        <button id="generateButton"
+            class="w-full bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-500 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+            Generate Script
+        </button>
+
+        <div id="loadingIndicator" class="mt-4 text-center text-indigo-400 font-semibold" style="display: none;">
+            Generating...
+        </div>
+
+        <div id="responseContainer" class="mt-8">
+            <h2 class="text-2xl font-semibold mb-4 text-indigo-300">Generated Script:</h2>
+            <div id="responseBox" class="response-box rounded-lg whitespace-pre-wrap overflow-x-auto text-sm">
+                <p>Your generated script will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
