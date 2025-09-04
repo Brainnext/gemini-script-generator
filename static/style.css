@@ -1,13 +1,96 @@
+/*
+    Custom styles for the Personal Script Generator app.
+    These styles are in addition to Tailwind CSS utility classes.
+*/
+
+/* Apply the Inter font to the body for a clean, modern look */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
+    position: relative;
+    overflow: hidden; /* Hide the overflow from the animated background */
 }
-.container {
-    max-width: 800px;
-}
+
+/* Base styles for the code response box */
 .response-box {
-    background-color: #1e1e1e;
-    border-left: 4px solid #6366f1;
+    background-color: #0f172a;
+    border: 2px solid #1e293b;
     padding: 1.5rem;
+    overflow-x: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Style the preformatted text and code blocks inside the response box */
+.response-box pre {
+    margin: 0;
+    padding: 0;
+}
+
+.response-box code {
+    /* Use 'block' to ensure the code block fills its container */
+    display: block; 
+    
+    /* Ensure no extra padding is added by highlight.js */
+    padding: 0; 
+}
+
+/* Position the copy button in the top-right corner of the container */
+.copy-button {
+    position: absolute;
+    top: 1rem; /* Adjust from the top */
+    right: 1rem; /* Adjust from the right */
+    transform: translateY(-50%); /* Vertically center relative to its position */
+}
+
+
+/* The spinner element with the new animation */
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    background-color: #34d399; /* A vibrant emerald green */
+    border-radius: 50%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* --- Glowing Background Animation --- */
+@keyframes glowing {
+    0% {
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+        transform: scale(1.1);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+    }
+}
+
+.glowing-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.4), rgba(0, 0, 0, 0));
+    animation: glowing 15s infinite alternate;
+    z-index: 0;
+}
+
+/* Keyframes for the card glowing effect */
+@keyframes card-glow {
+    0% {
+        box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(52, 211, 153, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
+    }
+}
+
+.glowing-card {
+    animation: card-glow 4s infinite ease-in-out;
 }
